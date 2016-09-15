@@ -17,11 +17,11 @@ status varchar(20));
 create table contenido (
 cod_lista int,
 cod_tarea int,
-status varchar(20),
 primary key (cod_lista,cod_tarea));
 
 create table tarea (
 cod_tarea int auto_increment primary key,
+status varchar(20),
 descripcion varchar(200));
 
 create table listas_users (

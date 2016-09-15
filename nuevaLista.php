@@ -81,8 +81,11 @@ if(isset($_POST['guardar'])){
                 $insertarea = "INSERT INTO tareas (descripcion) VALUES ('$tarea')";
                 mysql_query($insertarea);
                 $selsql = "";
-                $insertcon = "INSERT INTO need_p_m (cod_piece,cod_mat,quantity,remarks) VALUES ('$cod_piece','$cod_mat','$canti','$remarks')";
-                mysql_query($insertcon);
+                $selsql2 = mysql_query($selsql);
+                while ($row2 = mysql_fetch_assoc($selsql2)) {
+                    $insertcon = "INSERT INTO contenido (cod_piece,cod_mat,quantity,remarks) VALUES ('$cod_piece','$cod_mat','$canti','$remarks')";
+                    mysql_query($insertcon);
+                }
             }
         }
         echo "Lista añadida correctamente.<br/>";
