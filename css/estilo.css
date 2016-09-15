@@ -4,8 +4,8 @@ body {
 }
 
 .cuerpo {
-  padding-left:20px;
   padding-right:20px;
+  padding-left:20px;
   margin-top:60px;
 }
 
@@ -15,10 +15,11 @@ li.about{
   margin: 0 0 10px 10px;
 }
 
-li.log{
+.nav li.log{
   float:right;
   list-style-type:none;
   margin: 0 0 10px 10px;
+  width: 130px;
 }
 
 .aboutcuerpo{
@@ -45,7 +46,7 @@ li.log{
   font-size: 1.4em;
   line-height: 50px;
   text-align: left;
-  width: 130px;
+  width: 200px;
   border-bottom: none;
   height: 50px;
   display: inline-block;
@@ -77,23 +78,24 @@ li.log{
 
 .nav > ul > li > a {
   padding-left: 0;
+  /*width: 190px;*/
 }
 
 /* Sub Menus */
-.nav li ul {
+/*.nav li ul {
   margin-top:50px;
   position: absolute;
   display: none;
   width: inherit;
-}
+}*/
 
-.nav li li {
+/*.nav li li {
   font-size: .8em;
   background-color: #444;
   list-style: inherit;
   padding: 0;
   margin: 0;
-}
+}*/
 .nav li:hover ul {
   display: block;
 }
