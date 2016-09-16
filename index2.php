@@ -18,6 +18,7 @@
 </div>
 </header>
 <body>
+    <div class="cuerpo">
     <?php
         $dp = mysql_connect("localhost", "root", "" );
         mysql_select_db("todo", $dp);
@@ -27,12 +28,24 @@
         } else {
             $cod_user = $_SESSION["usuario"];
         }
-        $sql = "SELECT * FROM listas WHERE cod_user = $cod_user";
+        
+        $sql = "SELECT * FROM listas WHERE cod_user = '$cod_user'";
         $lst = mysql_query($sql);
         while ($row = mysql_fetch_assoc($lst)) {
-            echo "aaa";
+            echo "<table border=1>
+            <tr><th>NOMBRE</th></tr>
+            <tr><td>".$row['list_name']."</td></tr>
+            <tr><th>TAREAS</th></tr>";
+            $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."'";
+            $lst2 = mysql_query($sql2);
+            while ($row2 = mysql_fetch_assoc($lst2)) {
+                echo "<tr><td>".$row2['descripcion']."</td></tr>";
+            }
+            echo "</table>";
         }
+        mysql_close($dp);
     ?>
 <a href="#" class="go-top" id="go-top">Go up</a>
+</div>
 </body>
 </html>
