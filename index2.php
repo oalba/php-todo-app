@@ -41,7 +41,7 @@
             while ($row2 = mysql_fetch_assoc($lst2)) {
                 echo "<tr><td>".$row2['descripcion']."</td></tr>";
             }
-            echo "</table>";
+            echo "</table><br/>";
         }
         mysql_close($dp);
     ?>
