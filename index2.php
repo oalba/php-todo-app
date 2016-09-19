@@ -4,6 +4,7 @@
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
+<script type="text/javascript" src="js/scripts.js" ></script>
 </head>
 <body>
 <header>
@@ -28,7 +29,8 @@
             echo "<form  enctype='multipart/form-data' action='inc/check_tarea.php?cod_lista=".$row['cod_lista']."' method='post'>";
             echo "<table border=1>
             <tr><th colspan=3>NOMBRE</th></tr>
-            <tr><td><button><a href='inc/archivar_lista.php?cod_lista=".$row['cod_lista']."'>Archivar</a></button></td><td><button onclick=\"seguroFac($row[cod_fac]);\">Eliminar</button></td><td>".$row['list_name']."</td></tr>
+            <tr><td><button><a href='inc/archivar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Archivar</a></button></td>
+            <td><button onclick=\"seguroList('".$row['cod_lista']."','".$row['list_name']."');\">Eliminar</button></td><td>".$row['list_name']."</td></tr>
             <tr><th colspan=3>TAREAS</th></tr>";
             $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'correcto'";
             $lst2 = mysql_query($sql2);
