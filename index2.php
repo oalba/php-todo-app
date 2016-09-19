@@ -30,7 +30,7 @@
             echo "<table border=1>
             <tr><th colspan=3>NOMBRE</th></tr>
             <tr><td><button><a href='inc/archivar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Archivar</a></button></td>
-            <td><button onclick=\"seguroList('".$row['cod_lista']."','".$row['list_name']."');\">Eliminar</button></td><td>".$row['list_name']."</td></tr>
+            <td><button><a href='inc/delete_lists.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Eliminar</a></button></td><td>".$row['list_name']."</td></tr>
             <tr><th colspan=3>TAREAS</th></tr>";
             $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'correcto'";
             $lst2 = mysql_query($sql2);
