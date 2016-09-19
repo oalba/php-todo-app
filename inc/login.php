@@ -3,8 +3,7 @@ $user = $_POST['username'];
 $password = $_POST['password'];
 $salt = "SecuritySalt";
 $pass = hash('sha256', $salt.$password);
-$dp = mysql_connect("localhost", "root", "" );
-mysql_select_db("todo", $dp);
+include 'con.php';
 $sql = "SELECT * FROM users" ;
 $resultado = mysql_query($sql);
 while ($row = mysql_fetch_assoc($resultado)) {

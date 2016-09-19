@@ -20,14 +20,7 @@
 <body>
     <div class="cuerpo">
     <?php
-        $dp = mysql_connect("localhost", "root", "" );
-        mysql_select_db("todo", $dp);
-        session_start();
-        if(!isset($_SESSION["usuario"])){
-            header("location:index.html");
-        } else {
-            $cod_user = $_SESSION["usuario"];
-        }
+        include 'inc/conses.php';
         
         $sql = "SELECT * FROM listas WHERE cod_user = '$cod_user' AND status = 'archivado'";
         $lst = mysql_query($sql);

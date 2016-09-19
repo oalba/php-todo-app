@@ -10,8 +10,7 @@
         }
         return false;
     }
-    $dp = mysql_connect("localhost", "root", "" );
-    mysql_select_db("todo", $dp);
+    include 'con.php';
     $cod_lista = $_GET['cod_lista'];
     
     $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$cod_lista."'";

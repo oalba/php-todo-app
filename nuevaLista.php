@@ -17,17 +17,7 @@
 </ul>
 </div>
 </header>
-    <?php
-        $dp = mysql_connect("localhost", "root", "" );
-        mysql_select_db("todo", $dp);
-        session_start();
-        if(!isset($_SESSION["usuario"])){
-            header("location:index.html");
-        } else {
-            $cod_user = $_SESSION["usuario"];
-        }
-            
-    ?>
+    
     <script type="text/javascript">
         var nu = 2;
         function myFunction() {
@@ -69,6 +59,7 @@
     </form>
     
     <?php
+    include 'inc/conses.php';
     if(isset($_POST['guardar'])){
     	$list_name = $_POST['list_name'];
         //$fecha = ;

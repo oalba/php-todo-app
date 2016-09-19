@@ -1,6 +1,5 @@
 <?php
-$dp = mysql_connect("localhost", "root", "" );
-mysql_select_db("todo", $dp);
+include 'con.php';
 $name = "Admin";
 $user = "admin";
 $upassword = "zubiri";
