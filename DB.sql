@@ -25,3 +25,25 @@ create table listas_users (
 cod_lista int,
 cod_user int,
 primary key (cod_lista,cod_user));
+
+
+alter table listas
+add constraint fk_listas_users
+foreign key (cod_user)
+references users(cod_user)
+on delete cascade
+on update cascade;
+
+alter table listas_users
+add constraint fk_listasu_users2
+foreign key (cod_user)
+references users(cod_user)
+on delete cascade
+on update cascade;
+
+alter table contenido
+add constraint fk_listas_contenido
+foreign key (cod_lista)
+references listas(cod_lista)
+on delete cascade
+on update cascade;

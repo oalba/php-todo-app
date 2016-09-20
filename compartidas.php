@@ -22,14 +22,15 @@
     <?php
         include 'inc/conses.php';
         
-        $sql = "SELECT * FROM listas WHERE cod_user = '$cod_user' AND status = 'archivado'";
-        $lst = mysql_query($sql);
+        
         echo "<h1>Mis listas compartidas con otros</h1>";
+        $sql = "SELECT * FROM listas,listas_users WHERE listas.cod_user = '$cod_user' AND listas.status = 'correcto' AND listas.cod_lista = listas_users.cod_lista";
+        $lst = mysql_query($sql);
         while ($row = mysql_fetch_assoc($lst)) {
             //echo "<form  enctype='multipart/form-data' action='inc/check_tarea.php?cod_lista=".$row['cod_lista']."' method='post'>";
             echo "<table border=1>
             <tr><th colspan=3>NOMBRE</th></tr>
-            <tr><td><button><a href='inc/restaurar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Restaurar</a></button></td><td><button onclick=\"seguroFac($row[cod_fac]);\">Eliminar</button></td><td>".$row['list_name']."</td></tr>
+            <tr><td><button><a href='inc/restaurar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Dejar de compartir</a></button></td><td><!--<button onclick=\"seguroFac($row[cod_fac]);\">Eliminar</button>--><button><a href='inc/delete_lists.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Eliminar</a></button></td><td>".$row['list_name']."</td></tr>
             <tr><th colspan=3>TAREAS</th></tr>";
             $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'correcto'";
             $lst2 = mysql_query($sql2);

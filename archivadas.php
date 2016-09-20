@@ -28,7 +28,7 @@
             //echo "<form  enctype='multipart/form-data' action='inc/check_tarea.php?cod_lista=".$row['cod_lista']."' method='post'>";
             echo "<table border=1>
             <tr><th colspan=3>NOMBRE</th></tr>
-            <tr><td><button><a href='inc/restaurar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Restaurar</a></button></td><td><button onclick=\"seguroFac($row[cod_fac]);\">Eliminar</button></td><td>".$row['list_name']."</td></tr>
+            <tr><td><button><a href='inc/restaurar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Restaurar</a></button></td><td><!--<button onclick=\"seguroList($row[cod_fac]);\">Eliminar</button>--><button><a href='inc/delete_lists.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Eliminar</a></button></td><td>".$row['list_name']."</td></tr>
             <tr><th colspan=3>TAREAS</th></tr>";
             $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'correcto'";
             $lst2 = mysql_query($sql2);
