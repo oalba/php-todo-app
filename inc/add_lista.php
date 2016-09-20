@@ -21,6 +21,6 @@
             }
         }
         echo "Lista añadida correctamente.<br/>";
-        header("Location: ../nuevaLista.php");
+        header("Location: ../nuevaLista.html");
     mysql_close($dp);
     ?>

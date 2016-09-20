@@ -11,7 +11,7 @@
 <div class="nav">
 <ul>
     <li><a class="active" href="index2.php">Mis listas</a></li>
-    <li><a href="nuevaLista.php">Nueva lista</a></li>
+    <li><a href="nuevaLista.html">Nueva lista</a></li>
     <li><a href="compartidas.php">Listas compartidas</a></li>
     <li><a href="archivadas.php">Listas archivadas</a></li>
     <li class="log"><a href="inc/logout.php">Log out</a></li>
