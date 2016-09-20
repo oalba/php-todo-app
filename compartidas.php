@@ -24,7 +24,7 @@
         
         
         echo "<h1>Mis listas compartidas con otros</h1>";
-        $sql = "SELECT * FROM listas,listas_users WHERE listas.cod_user = '$cod_user' AND listas.status = 'correcto' AND listas.cod_lista = listas_users.cod_lista";
+        $sql = "SELECT listas.list_name AS list_name, listas.cod_lista AS cod_lista FROM listas,listas_users WHERE listas.cod_user = '$cod_user' AND listas.status = 'correcto' AND listas.cod_lista = listas_users.cod_lista";
         $lst = mysql_query($sql);
         while ($row = mysql_fetch_assoc($lst)) {
             //echo "<form  enctype='multipart/form-data' action='inc/check_tarea.php?cod_lista=".$row['cod_lista']."' method='post'>";
@@ -53,6 +53,11 @@
             //echo "<tr><td colspan=3><input type='submit' name='guardar' value='Guardar'/></td></tr>";
             echo "</table></td><td><table border=1>";
             echo "<tr><th colspan=2>Compartida con:</th></tr>";
+            $sql4 = "SELECT users.name AS name, users.cod_user AS cod_user FROM listas_users,users WHERE listas_users.cod_lista = '".$row['cod_lista']."' listas_users.cod_user = users.cod_user";
+            $lst4 = mysql_query($sql4);
+            while ($row4 = mysql_fetch_assoc($lst4)) {
+                echo "<tr><td></td><td>".$row4['name']."</td></tr>";
+            }
             
             echo "</table></td></tr></table>";
             //echo "</form>";
