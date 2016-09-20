@@ -12,7 +12,7 @@
 <ul>
     <li><a class="active" href="index2.php">Mis listas</a></li>
     <li><a href="nuevaLista.php">Nueva lista</a></li>
-    <li><a href=".php">Listas compartidas</a></li>
+    <li><a href="compartidas.php">Listas compartidas</a></li>
     <li><a href="archivadas.php">Listas archivadas</a></li>
     <li class="log"><a href="inc/logout.php">Log out</a></li>
 </ul>
@@ -30,7 +30,7 @@
             echo "<table border=1>
             <tr><th colspan=3>NOMBRE</th></tr>
             <tr><td><button><a href='inc/archivar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Archivar</a></button></td>
-            <td><button><a href='inc/delete_lists.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Eliminar</a></button></td><td>".$row['list_name']."</td></tr>
+            <td><!--<button onclick=\"seguroList('$row[cod_lista]','$row[list_name]');\">Eliminar</button>--><button><a href='inc/delete_lists.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Eliminar</a></button></td><td>".$row['list_name']."</td></tr>
             <tr><th colspan=3>TAREAS</th></tr>";
             $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'correcto'";
             $lst2 = mysql_query($sql2);

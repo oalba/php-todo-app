@@ -11,8 +11,8 @@
 <ul>
     <li><a href="index2.php">Mis listas</a></li>
     <li><a href="nuevaLista.php">Nueva lista</a></li>
-    <li><a href="compartidas.php">Listas compartidas</a></li>
-    <li><a class="active" href="archivadas.php">Listas archivadas</a></li>
+    <li><a class="active" href="compartidas.php">Listas compartidas</a></li>
+    <li><a href="archivadas.php">Listas archivadas</a></li>
     <li class="log"><a href="inc/logout.php">Log out</a></li>
 </ul>
 </div>
@@ -24,6 +24,7 @@
         
         $sql = "SELECT * FROM listas WHERE cod_user = '$cod_user' AND status = 'archivado'";
         $lst = mysql_query($sql);
+        echo "<h1>Mis listas compartidas con otros</h1>";
         while ($row = mysql_fetch_assoc($lst)) {
             //echo "<form  enctype='multipart/form-data' action='inc/check_tarea.php?cod_lista=".$row['cod_lista']."' method='post'>";
             echo "<table border=1>
@@ -49,6 +50,7 @@
             //echo "</form>";
             echo "<br/>";
         }
+        echo "<h1>Listas de otros compartidas conmigo</h1>";
         mysql_close($dp);
     ?>
 <a href="#" class="go-top" id="go-top">Go up</a>

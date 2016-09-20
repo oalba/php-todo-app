@@ -11,8 +11,8 @@
 <ul>
     <li><a href="index2.php">Mis listas</a></li>
     <li><a class="active" href="nuevaLista.php">Nueva lista</a></li>
-    <li><a href=".php">Listas compartidas</a></li>
-    <li><a href=".php">Listas archivadas</a></li>
+    <li><a href="compartidas.php">Listas compartidas</a></li>
+    <li><a href="archivadas.php">Listas archivadas</a></li>
     <li class="log"><a href="inc/logout.php">Log out</a></li>
 </ul>
 </div>
