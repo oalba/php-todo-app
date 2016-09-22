@@ -73,7 +73,7 @@
             <tr>";
             //echo "<td><button><a href='inc/descompartir.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Dejar de compartir</a></button></td>";
             //echo "<td><!--<button onclick=\"seguroFac($row[cod_fac]);\">Eliminar</button>--><button><a href='inc/delete_lists.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Eliminar</a></button></td>";
-            echo "<td colspan=3>".$row['list_name']."</td>";
+            echo "<td><button><a href='editar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Editar</a></button></td><td colspan=2>".$row['list_name']."</td>";
             echo "</tr><form  enctype='multipart/form-data' action='inc/check_tarea_c.php?cod_lista=".$row['cod_lista']."' method='post'>
             <tr><th colspan=3>TAREAS</th></tr>";
             $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'correcto'";

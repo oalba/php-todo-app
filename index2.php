@@ -28,8 +28,9 @@
         while ($row = mysql_fetch_assoc($lst)) {
             
             echo "<table border=1>
-            <tr><th colspan=3>NOMBRE</th></tr>
-            <tr><td><button><a href='inc/archivar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Archivar</a></button></td>
+            <tr><th colspan=4>NOMBRE</th></tr>
+            <tr><td><button><a href='editar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Editar</a></button></td>
+            <td><button><a href='inc/archivar_lista.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Archivar</a></button></td>
             <td><!--<button onclick=\"seguroList('$row[cod_lista]','$row[list_name]');\">Eliminar</button>--><button><a href='inc/delete_lists.php?cod_lista=".$row['cod_lista']."' style=\"text-decoration:none\">Eliminar</a></button></td>
             <td>".$row['list_name']."</td>";
             
@@ -46,20 +47,20 @@
             echo "</select><input type='submit' name='compartir' value='Compartir'/></form></td></tr>";
             
             echo "<form enctype='multipart/form-data' action='inc/check_tarea.php?cod_lista=".$row['cod_lista']."' method='post'>";
-            echo "<tr><th colspan=3>TAREAS</th></tr>";
+            echo "<tr><th colspan=4>TAREAS</th></tr>";
             
             $sql2 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'correcto'";
             $lst2 = mysql_query($sql2);
             while ($row2 = mysql_fetch_assoc($lst2)) {
-                echo "<tr><td><button><a href='inc/del_tarea.php?cod_lista=".$row['cod_lista']."&cod_tarea=".$row2['cod_tarea']."' style=\"text-decoration:none\">Eliminar</a></button></td><td><input type='checkbox' name='check[]' value='".$row2['cod_tarea']."'/></td><td>".$row2['descripcion']."</td></tr>";
+                echo "<tr><td><button><a href='inc/del_tarea.php?cod_lista=".$row['cod_lista']."&cod_tarea=".$row2['cod_tarea']."' style=\"text-decoration:none\">Eliminar</a></button></td><td><input type='checkbox' name='check[]' value='".$row2['cod_tarea']."'/></td><td colspan=2>".$row2['descripcion']."</td></tr>";
             }
             $sql3 = "SELECT * FROM contenido WHERE cod_lista = '".$row['cod_lista']."' AND status = 'checked'";
             $lst3 = mysql_query($sql3);
             while ($row3 = mysql_fetch_assoc($lst3)) {
-                echo "<tr><td><button><a href='inc/del_tarea.php?cod_lista=".$row['cod_lista']."&cod_tarea=".$row3['cod_tarea']."' style=\"text-decoration:none\">Eliminar</a></button></td><td><input type='checkbox' name='check[]' value='".$row3['cod_tarea']."' checked/></td><td><s>".$row3['descripcion']."</s></td></tr>";
+                echo "<tr><td><button><a href='inc/del_tarea.php?cod_lista=".$row['cod_lista']."&cod_tarea=".$row3['cod_tarea']."' style=\"text-decoration:none\">Eliminar</a></button></td><td><input type='checkbox' name='check[]' value='".$row3['cod_tarea']."' checked/></td><td colspan=2><s>".$row3['descripcion']."</s></td></tr>";
             }
-            echo "<tr><td colspan=3><input type='submit' name='guardar' value='Guardar'/></td></tr></form>";
-            echo "<form enctype='multipart/form-data' action='inc/add_tarea.php?cod_lista=".$row['cod_lista']."' method='post'><tr><td colspan=2><input type='text' name='tarea'/></td><td><input type='submit' name='anadir' value='Añadir'/></td></tr></form></table><br/>";
+            echo "<tr><td colspan=4><input type='submit' name='guardar' value='Guardar'/></td></tr></form>";
+            echo "<form enctype='multipart/form-data' action='inc/add_tarea.php?cod_lista=".$row['cod_lista']."' method='post'><tr><td colspan=3><input type='text' name='tarea'/></td><td><input type='submit' name='anadir' value='Añadir'/></td></tr></form></table><br/>";
         }
         mysql_close($dp);
     ?>
