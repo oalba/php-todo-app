@@ -1,5 +1,5 @@
 <?php
-        include 'inc/conses.php';
+        include 'conses.php';
         
         $sql = "SELECT * FROM listas WHERE cod_user = '$cod_user' AND status = 'correcto'";
         $lst = mysql_query($sql);

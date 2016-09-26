@@ -4,16 +4,15 @@
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" ></script>
 </head>
 <body>
 <header>
 <div class="nav">
 <ul>
-    <li><a class="active" href="index2.html">Mis listas</a></li>
+    <li><a href="index2.html">Mis listas</a></li>
     <li><a href="nuevaLista.html">Nueva lista</a></li>
     <li><a href="compartidas.php">Listas compartidas</a></li>
-    <li><a href="archivadas.html">Listas archivadas</a></li>
+    <li><a class="active" href="archivadas.html">Listas archivadas</a></li>
     <li class="log"><a href="inc/logout.php">Log out</a></li>
 </ul>
 </div>
@@ -24,16 +23,16 @@
 			<script type="text/javascript">
 
 			$(document).ready(function(){
-				var url="inc/index2an.php";
+				var url="inc/archivadas.php";
 				//var url="index2an.php";
 				$("#cuerpo").html("");
 				$.getJSON(url,function(listas){
 					$.each(listas, function(i,lista){
 						var newRow =
-						"<form enctype='multipart/form-data' action='inc/check_tarea.php?cod_lista="+lista.cod_lista+"' method='post'>"
 						+"<table border=1><tr><th colspan=3>NOMBRE</th></tr>"
 						+"<tr><td><button><a href='inc/delete_lists.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Eliminar</a></button></td>"
-						+"<td colspan=2>"+lista.list_name+"</td></tr>"
+						+"<td><button><a href='inc/restaurar_lista.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Restaurar</a></button></td>"
+						+"<td>"+lista.list_name+"</td></tr>"
 						+"<tr><th colspan=3>TAREAS</th></tr>";
 						for (var e = 0; e < lista.tareas.length; e++){
 							if (lista.tareas[e].cod_lista == lista.cod_lista){
@@ -41,9 +40,7 @@
 									newRow = newRow +
 									"<tr>"
 									//+"<td>"+lista.tareas[e].cod_tarea+"</td>"
-									+"<td><button><a href='inc/del_tarea.php?cod_lista="+lista.cod_lista+"&cod_tarea="+lista.tareas[e].cod_tarea+"' style=\"text-decoration:none\">Eliminar</a></button></td>"
-									+"<td><input type='checkbox' name='check[]' value='"+lista.tareas[e].cod_tarea+"'/></td>"
-									+"<td>"+lista.tareas[e].descripcion+"</td>"
+									+"<td colspan=3>"+lista.tareas[e].descripcion+"</td>"
 									+"</tr>";
 								}
 								
@@ -56,18 +53,14 @@
 									newRow = newRow +
 									"<tr>"
 									//+"<td>"+lista.tareas[o].cod_tarea+"</td>"
-									+"<td><button><a href='inc/del_tarea.php?cod_lista="+lista.cod_lista+"&cod_tarea="+lista.tareas[o].cod_tarea+"' style=\"text-decoration:none\">Eliminar</a></button></td>"
-									+"<td><input type='checkbox' name='check[]' value='"+lista.tareas[o].cod_tarea+"' checked/></td>"
-									+"<td><s>"+lista.tareas[o].descripcion+"</s></td>"
+									+"<td colspan=3><s>"+lista.tareas[o].descripcion+"</s></td>"
 									+"</tr>";
 								}
 								
 							}
 							
 						}
-						newRow = newRow + "<tr><td colspan=3><input type='submit' name='guardar' value='Guardar'/></td></tr>"
-						//+"<tr><form enctype='multipart/form-data' action='inc/add_tarea.php?cod_lista="+lista.cod_lista+"' method='post'><td colspan=2><input type='text' name='tarea'/></td><td><input type='submit' name='anadir' value='Añadir'/></td></form></tr>"
-						+"</table></form><br/><br/>";
+						newRow = newRow +"</table><br/><br/>";
 						$(newRow).appendTo("#cuerpo");
 					});
 				});
