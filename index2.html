@@ -19,32 +19,51 @@
 </div>
 </header>
 <body>
-    <div class="cuerpo">
-        <table id="tablajson">
-			<thead>
-			<th>Id</th>
-			<th>Nombre</th>
-			</thead>
-			<tbody></tbody>
-			</table>
+    <div class="cuerpo" id="cuerpo">
 
 			<script type="text/javascript">
 
 			$(document).ready(function(){
+				//var url="inc/index2an.php";
 				var url="index2an.php";
-				$("#tablajson tbody").html("");
+				$("#cuerpo").html("");
 				$.getJSON(url,function(listas){
 					$.each(listas, function(i,lista){
 						var newRow =
-						"<tr>"
-						+"<td>"+lista.cod_lista+"</td>"
-						+"<td>"+lista.list_name+"</td>"
-						+"</tr>";
-						$(newRow).appendTo("#tablajson tbody");
+						"<table border=1><tr><th>NOMBRE</th></tr>"
+						+"<tr><td>"+lista.list_name+"</td></tr><tr><th>TAREAS</th></tr>";
+						for (var e = 0; e < lista.tareas.length; e++){
+							if (lista.tareas[e].cod_lista == lista.cod_lista){
+								if (lista.tareas[e].status == "correcto"){
+									newRow = newRow +
+									"<tr>"
+									//+"<td>"+lista.tareas[e].cod_tarea+"</td>"
+									+"<td>"+lista.tareas[e].descripcion+"</td>"
+									+"</tr>";
+								}
+								
+							}
+							
+						}
+						for (var o = 0; o < lista.tareas.length; o++){
+							if (lista.tareas[o].cod_lista == lista.cod_lista){
+								if (lista.tareas[o].status == "checked"){
+									newRow = newRow +
+									"<tr>"
+									//+"<td>"+lista.tareas[o].cod_tarea+"</td>"
+									+"<td><s>"+lista.tareas[o].descripcion+"</s></td>"
+									+"</tr>";
+								}
+								
+							}
+							
+						}
+						newRow = newRow + "</table><br/><br/>";
+						$(newRow).appendTo("#cuerpo");
 					});
 				});
 			});
-
+		//dataJS[0].comments[0].created_at
 			</script>
     
 <a href="#" class="go-top" id="go-top">Go up</a>
