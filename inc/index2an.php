@@ -1,5 +1,6 @@
 <?php
-        include 'conses.php';
+    include 'conses.php';
+    try {
         
         $sql = "SELECT * FROM listas WHERE cod_user = '$cod_user' AND status = 'correcto'";
         $lst = mysql_query($sql);
@@ -35,4 +36,8 @@
         echo $json_string;
         /*$json_string2 = json_encode($users);
         echo $json_string2;*/
+        
+    } catch (Exception $ex) {
+        echo "Ha habido un error: ".$ex->getMessage();
+    }
 ?>

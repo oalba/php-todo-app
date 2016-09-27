@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+<body>
+<header>
+<div class="nav">
+<ul>
+    <li><a href="index2.html">Mis listas</a></li>
+    <li><a class="active" href="nuevaLista.html">Nueva lista</a></li>
+    <li><a href="compartidas.php">Listas compartidas</a></li>
+    <li><a href="archivadas.html">Listas archivadas</a></li>
+    <li class="log"><a href="inc/logout.php">Log out</a></li>
+</ul>
+</div>
+</header>
+    
+    <script type="text/javascript">
+        var nu = 2;
+        function myFunction() {
+            if (nu <= '40') {
+                var iq1 = document.createElement('INPUT');
+                iq1.setAttribute('type', 'text');
+                
+                iq1.setAttribute('name', 'tarea'+nu);
+                
+                var tr = document.createElement('TR');
+                var td1 = document.createElement('TD');
+                td1.appendChild(iq1);
+                td1.setAttribute('colspan', '2');
+                tr.appendChild(td1);
+                var wrapper = document.getElementById('myTable');
+                wrapper.appendChild(tr);
+                nu = nu+1;
+            }
+        }
+    </script>
+    <div class="cuerpo">
+    <h1><u><i>Nueva lista</i></u></h1>
+    <form enctype='multipart/form-data' action='inc/add_lista.php' method='post'>
+    <table border=1 id="myTable">
+        <tr>
+            <th colspan=2>Nombre:</th>
+        </tr>
+        <tr>
+            <td colspan=2><input type="text" name="list_name"/></td>
+        </tr>
+        <tr>
+            <th>Tareas:</th><th><button type="button" onclick="myFunction()">Add more</button></th>
+        </tr>
+        <tr>
+            <td colspan=2><input type="text" name="tarea1"/></td>
+        </tr>
+    </table>
+    <input type='submit' name='guardar' value='Guardar'/>
+    </form>
+    
+    
+</div>
+<a href="#" class="go-top" id="go-top">Go up</a>
+</body>
+</html>

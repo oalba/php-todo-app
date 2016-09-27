@@ -1,6 +1,7 @@
 <?php
-        include 'conses.php';
+    include 'conses.php';
         
+    try{
         $sql = "SELECT * FROM listas WHERE cod_user = '$cod_user' AND status = 'archivado'";
         $lst = mysql_query($sql);
         $listas = array();
@@ -24,4 +25,8 @@
         mysql_close($dp);
         $json_string = json_encode($listas);
         echo $json_string;
+        
+    } catch (Exception $ex) {
+        echo "Ha habido un error: ".$ex->getMessage();
+    }
 ?>
