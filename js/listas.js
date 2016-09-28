@@ -9,7 +9,8 @@ $(document).ready(function(){
 			+"<table border=1><tr><th colspan=4>NOMBRE</th></tr>"
 			+"<tr><td><button><a href='inc/delete_lists.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Eliminar</a></button></td>"
 			+"<td><button><a href='inc/archivar_lista.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Archivar</a></button></td>"
-			+"<td><button><a href='editar_lista.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Editar</a></button></td>"
+			//+"<td><button><a href='editar_lista.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Editar</a></button></td>"
+			+"<td><button onClick='editarl("+lista.cod_lista+")' style=\"text-decoration:none\">Editar</button></td>"
 			+"<td>"+lista.list_name+"</td></tr>"
 			+"<tr><th colspan=4>TAREAS</th></tr>";
 			for (var e = 0; e < lista.tareas.length; e++){
@@ -102,3 +103,78 @@ $(document).ready(function(){
 		});
 	});
 });
+
+
+
+
+function editarl(cod_lista){
+$(document).ready(function(){
+	var url="inc/editar_lista.php?cod_lista="+cod_lista;
+
+    //$( "#formname" ).submit(function( event ) {
+
+        //console.log("submit");
+        /* Stop form from submitting normally */
+        //event.preventDefault();
+        /* Clear result div*/
+        $("#editar").html("");
+
+
+        //var formData = $(this).serializeArray();
+
+        /*$.ajax({
+           type: "GET",
+           //type: "POST",
+           url: "inc/editar_lista.php",
+           dataType: "json",
+           //dataType: "html",
+           data:{'cod_lista':cod_lista},*/
+           //data: formData,
+
+           //success: function(data){
+              $.getJSON(url,function(listas){
+		$.each(listas, function(i,lista){
+			var newRow =
+			"<table border=1><tr><th colspan=3>NOMBRE</th></tr>"
+			+"<tr><td><button><a href='inc/delete_lists.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Eliminar</a></button></td>"
+			+"<td><button><a href='inc/restaurar_lista.php?cod_lista="+lista.cod_lista+"' style=\"text-decoration:none\">Restaurar</a></button></td>"
+			+"<td>"+lista.list_name+"</td></tr>"
+			+"<tr><th colspan=3>TAREAS</th></tr>";
+			for (var e = 0; e < lista.tareas.length; e++){
+				if (lista.tareas[e].cod_lista == lista.cod_lista){
+					if (lista.tareas[e].status == "correcto"){
+						newRow = newRow +
+						"<tr>"
+						//+"<td>"+lista.tareas[e].cod_tarea+"</td>"
+						+"<td colspan=3>"+lista.tareas[e].descripcion+"</td>"
+						+"</tr>";
+					}
+					
+				}
+				
+			}
+			for (var o = 0; o < lista.tareas.length; o++){
+				if (lista.tareas[o].cod_lista == lista.cod_lista){
+					if (lista.tareas[o].status == "checked"){
+						newRow = newRow +
+						"<tr>"
+						//+"<td>"+lista.tareas[o].cod_tarea+"</td>"
+						+"<td colspan=3><s>"+lista.tareas[o].descripcion+"</s></td>"
+						+"</tr>";
+					}
+					
+				}
+				
+			}
+			newRow = newRow +"</table><br/><br/>";
+			$(newRow).appendTo("#editar");
+		});
+	});
+           //}
+
+        });
+
+    //});
+
+//});
+}
