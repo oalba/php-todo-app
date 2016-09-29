@@ -1,7 +1,7 @@
 
     <?php
         include_once('conses.php');
-        $cod_lista = $_GET['cod_lista'];
+        $cod_lista = $_POST['cod_lista'];
         
         $sql = "SELECT * FROM listas WHERE status = 'correcto' AND cod_lista = '$cod_lista'";
         $lst = mysql_query($sql);
